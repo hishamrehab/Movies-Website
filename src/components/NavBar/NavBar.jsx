@@ -37,8 +37,6 @@ const NavBar = () => {
                     </IconButton>
 
 
-
-
                     {!isMobile && 'Search...'}
                     <div>
                         {!isAuthenticated ? (
@@ -53,7 +51,7 @@ const NavBar = () => {
                             </Button>
                         )}
                     </div>
-                    {!isMobile && 'Search...'}
+
                 </Toolbar>
             </AppBar >
             <div>
