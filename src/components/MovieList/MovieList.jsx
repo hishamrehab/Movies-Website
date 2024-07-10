@@ -1,8 +1,9 @@
 import React from 'react'
 import { Grid } from '@mui/material';
 import useStyles from "./styles";
-import { Movie } from "..";
-export const MovieList = ({ movies }) => {
+import Movie from '../Movie/Movie';
+
+export const MovieList = ({ movies, i }) => {
     const classes = useStyles();
 
     return (

@@ -1,10 +1,14 @@
 import React from 'react';
 import { CssBaseline } from '@mui/material';
 import { Route, Routes } from "react-router-dom";
-import { Actors, MovieInformation, NavBar, Profile, Movies } from "./components/index"
+import NavBar from "../src/components/NavBar/NavBar"
+import Movies from "../src/components/Movies/Movies"
+import MovieInformation from "../src/components/MovieInformation/MovieInformation"
+import Actors from "../src/components/Actors/Actors"
+import Profile from "../src/components/Profile/Profile"
+
 import useStyles from "./styles";
 import { Link } from 'react-router-dom';
-
 
 
 
