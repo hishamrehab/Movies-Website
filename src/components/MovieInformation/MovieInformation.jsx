@@ -8,6 +8,7 @@ import useStyles from "./styles";
 import { useGetMovieQuery } from "../../services/TMDB";
 import genreIcons from "../../assets/genres";
 import { selectGenreOrCategory } from "../../features/currentGenreOrCategory";
+import { useGetRecommendationsQuery } from '../../services/TMDB';
 
 
 
@@ -16,11 +17,19 @@ const MovieInformation = () => {
     const classes = useStyles();
     const { data, isFetching, error } = useGetMovieQuery(id);
     const dispatch = useDispatch();
+    const isMovieFavorited = true;
+    const isMovieWatchListed = true;
+
+
+
+
+
 
 
     const addToFavorites = () => {
 
     }
+
 
     const addToWatchlist = () => {
 
@@ -73,7 +82,7 @@ const MovieInformation = () => {
                 <Grid item className={classes.genresContainer}>
                     {data?.genres?.map((genre, i) => (<Link key={genre.name} className={classes.links} to="/" onClick={() => { dispatch(selectGenreOrCategory(genre.id)) }}>
                         <img src={genreIcons[genre.name.toLowerCase()]} className={classes.genreImage} height={30} />
-                        <Typography color="textPrimary" variant='subtitle1'>
+                        <Typography color="textPrimary" variant='subtitle1' >
                             {genre?.name}
                         </Typography>
                     </Link>))}
@@ -118,23 +127,42 @@ const MovieInformation = () => {
                 }}>
                     <div className={classes.buttonsContainer}>
                         <Grid item xs={12} sm={6} className={classes.buttonsContainer}>
-                            <ButtonGroup size='small' variant='outlined'>
+                            <ButtonGroup size='medium' variant='outlined'>
                                 <Button target='_blank' rel='noopener noreferrer' href={data?.homepage} endIcon={<Language />}>Website</Button>
                                 <Button target='_blank' rel='noopener noreferrer' href={`https://www.imdb.com/title/${data?.imdb_id}`} endIcon={<MovieIcon />}>Imdb</Button>
                                 <Button onClick={() => { }} href='#' endIcon={<Theaters />}>Trailer</Button>
                             </ButtonGroup>
                         </Grid>
 
-                        <Grid item xs={12} sm={6} className={classes.buttonsContainer}>
+                        <Grid item xs={12} sm={6} className={classes.buttonsContainer} sx={{
+                            marginTop: {
+                                xs: "20px",
+                                md: "0"
+                            },
+                        }
+                        } >
                             <ButtonGroup size='small' variant='outlined'>
-                                <Button onClick={addToFavorites}></Button>
+                                <Button onClick={addToFavorites} endIcon={isMovieFavorited ? <FavoriteBorderOutlined /> : <Favorite />}>{isMovieFavorited ? 'Unfavorite' : 'Favorite'}</Button>
+                                <Button onClick={addToWatchlist} endIcon={isMovieWatchListed ? <Remove /> : <PlusOne />}>WatchList</Button>
+                                <Button endIcon={<ArrowBack />} >
+                                    <Typography component={Link} to='/' color="inherit" variant='subtitle2' style={{
+                                        borderColor: "primary.main",
+                                        textDecoration: "none"
+                                    }}>Back</Typography>
+                                </Button>
                             </ButtonGroup>
                         </Grid>
-
-
                     </div>
                 </Grid>
-            </Grid>
+            </Grid >
+            <Box marginTop="5rem" width="100%">
+                <Typography variant='h3' gutterBottom align='center'>
+                    You  might also like
+                </Typography>
+                {/* loop through the recommended movies... */}
+
+            </Box>
+
         </Grid>
     )
 }
