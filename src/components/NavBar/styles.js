@@ -8,9 +8,15 @@ export default makeStyles((theme) => ({
     display: "flex",
     justifyContent: "space-between",
     marginLeft: "240px",
+
     [theme.breakpoints.down("sm")]: {
+      display: "flex",
+      justifyContent: "space-between",
+      alignContent: "center",
+
       marginLeft: 0,
       flexWrap: "wrap",
+      paddingTop: "8px",
     },
   },
   menuButton: {
