@@ -30,16 +30,12 @@ const MovieInformation = () => {
 
 
     useEffect(() => {
-        setIsMovieFavorited(!!favoriteMovies?.results?.find((movie) => {
-            movie?.id === data?.id
-        }))
+        setIsMovieFavorited(!!favoriteMovies?.results?.find((movie) => movie?.id === data?.id));
     }, [favoriteMovies, data])
 
 
     useEffect(() => {
-        setIsMovieWatchListed(!!watchlistMovies?.results?.find((movie) => {
-            movie?.id === data?.id
-        }))
+        setIsMovieWatchListed(!!watchlistMovies?.results?.find((movie) => movie?.id === data?.id));
     }, [watchlistMovies, data])
 
 

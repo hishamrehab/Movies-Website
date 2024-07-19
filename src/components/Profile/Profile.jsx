@@ -9,11 +9,8 @@ import RatedCards from '../RatedCards/RatedCards';
 
 const Profile = () => {
     const { user } = useSelector(userSelector);
-
-
     const { data: favoriteMovies, refetch: refetchFavorites } = useGetListQuery({ listName: 'favorite/movies', accountId: user.id, sessionId: localStorage.getItem('session_id'), page: 1 });
     const { data: watchlistMovies, refetch: refetchWatchlisted } = useGetListQuery({ listName: 'watchlist/movies', accountId: user.id, sessionId: localStorage.getItem('session_id'), page: 1 });
-
 
 
     useEffect(() => {
@@ -38,7 +35,7 @@ const Profile = () => {
                 <Button color='inherit' onClick={logout}>Logout &nbsp; <ExitToApp /></Button>
             </Box>
             {!favoriteMovies?.results?.length && !watchlistMovies?.results?.length ? (
-                <Typography variant='h6' >Add favorites or watchList some movies to see them here!</Typography>
+                <Typography variant='h6'>Add favorites or watchList some movies to see them here!</Typography>
             ) : (<Box>
                 <RatedCards title="favorite Movies" data={favoriteMovies} />
                 <RatedCards title="watchlist" data={watchlistMovies} />

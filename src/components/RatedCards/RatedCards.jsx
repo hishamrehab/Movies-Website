@@ -11,8 +11,6 @@ const RatedCads = ({ title, data }) => {
                 {data?.results.map((movie, i) => (
                     <Movie key={movie.id} movie={movie} i={i} />
                 )
-
-
                 )}
             </Box>
         </Box>
